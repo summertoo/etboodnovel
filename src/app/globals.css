@@ -6,14 +6,14 @@
   --foreground-rgb: 30, 41, 59;
   --background-start-rgb: 248, 250, 252;
   --background-end-rgb: 248, 250, 252;
-  /* 淡蓝色主题变量 */
-  --ocean-primary: #0ea5e9;
-  --ocean-secondary: #38bdf8;
-  --ocean-accent: #7dd3fc;
-  --ocean-border: #bae6fd;
-  --ocean-muted: #64748b;
-  --ocean-light: #f0f9ff;
-  --ocean-dark: #0369a1;
+  /* 橘红色主题变量 */
+  --orange-primary: #f97316;
+  --orange-secondary: #ea580c;
+  --orange-accent: #fb923c;
+  --orange-border: #fed7aa;
+  --orange-muted: #64748b;
+  --orange-light: #fff7ed;
+  --orange-dark: #c2410c;
 }
 
 body {
@@ -23,48 +23,48 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* 海洋主题容器 - 淡蓝色渐变背景 */
-.ocean-container {
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0f9ff 100%);
+/* 橘红主题容器 - 暖色渐变背景 */
+.orange-container {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 50%, #fff7ed 100%);
   min-height: 100vh;
 }
 
-.ocean-hero {
-  background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 50%, #e0f2fe 100%);
+.orange-hero {
+  background: linear-gradient(135deg, #ffedd5 0%, #fff7ed 50%, #ffedd5 100%);
 }
 
-/* 标题 - 海洋蓝渐变 */
-.ocean-title {
-  background: linear-gradient(135deg, #0284c7, #0ea5e9);
+/* 标题 - 橘红渐变 */
+.orange-title {
+  background: linear-gradient(135deg, #ea580c, #f97316);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 /* 副标题 */
-.ocean-subtitle {
+.orange-subtitle {
   color: #64748b;
   line-height: 1.8;
 }
 
-/* 卡片样式 - 海洋风格 */
-.ocean-card {
+/* 卡片样式 - 橘红风格 */
+.orange-card {
   background: white;
-  border: 1px solid var(--ocean-border);
+  border: 1px solid var(--orange-border);
   border-radius: 16px;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.06);
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.06);
 }
 
-.ocean-card:hover {
-  border-color: var(--ocean-primary);
-  box-shadow: 0 12px 32px -8px rgba(14, 165, 233, 0.2);
+.orange-card:hover {
+  border-color: var(--orange-primary);
+  box-shadow: 0 12px 32px -8px rgba(249, 115, 22, 0.2);
   transform: translateY(-2px);
 }
 
 /* 按钮 */
-.ocean-button {
-  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+.orange-button {
+  background: linear-gradient(135deg, #f97316, #ea580c);
   color: white;
   padding: 12px 28px;
   border-radius: 12px;
@@ -73,18 +73,18 @@ body {
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.25);
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.25);
 }
 
-.ocean-button:hover {
+.orange-button:hover {
   opacity: 0.9;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.35);
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.35);
 }
 
 /* 小按钮 */
-.ocean-button-small {
-  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+.orange-button-small {
+  background: linear-gradient(135deg, #f97316, #ea580c);
   color: white;
   padding: 8px 20px;
   border-radius: 8px;
@@ -93,25 +93,25 @@ body {
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.2);
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.2);
 }
 
-.ocean-button-small:hover {
+.orange-button-small:hover {
   opacity: 0.9;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
 }
 
 /* 标签样式 */
-.ocean-tag {
-  background: var(--ocean-light);
-  color: var(--ocean-dark);
-  border: 1px solid var(--ocean-border);
+.orange-tag {
+  background: var(--orange-light);
+  color: var(--orange-dark);
+  border: 1px solid var(--orange-border);
 }
 
-.ocean-footer {
-  border-top: 1px solid var(--ocean-border);
-  background: rgba(224, 242, 254, 0.5);
+.orange-footer {
+  border-top: 1px solid var(--orange-border);
+  background: rgba(255, 237, 213, 0.5);
 }
 
 /* 状态标签 */
@@ -129,13 +129,13 @@ body {
 
 /* 章节编号圆圈 */
 .chapter-number {
-  background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
-  color: var(--ocean-dark);
+  background: linear-gradient(135deg, #ffedd5, #fff7ed);
+  color: var(--orange-dark);
 }
 
 /* 双语模式边框 */
 .bilingual-border {
-  border-left: 3px solid var(--ocean-accent);
+  border-left: 3px solid var(--orange-accent);
 }
 
 /* 章节内容样式 */
@@ -146,11 +146,11 @@ body {
 
 /* 移动端优化 */
 @media (max-width: 768px) {
-  .ocean-container {
-    background: linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 100%);
+  .orange-container {
+    background: linear-gradient(180deg, #fff7ed 0%, #ffedd5 100%);
   }
   
-  .ocean-card {
+  .orange-card {
     border-radius: 12px;
     padding: 1rem;
   }
@@ -158,15 +158,15 @@ body {
 
 /* 平板适配 */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .ocean-container {
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 60%, #f0f9ff 100%);
+  .orange-container {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 60%, #fff7ed 100%);
   }
 }
 
 /* 桌面端大屏幕 */
 @media (min-width: 1280px) {
-  .ocean-container {
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 40%, #f0f9ff 30%, #e0f2fe 100%);
+  .orange-container {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 40%, #fff7ed 30%, #ffedd5 100%);
   }
 }
 
@@ -196,4 +196,95 @@ body {
 .reader-mode p {
   text-align: justify;
   text-justify: inter-ideograph;
+}
+
+/* 兼容旧的类名 - 保持蓝色主题 */
+.ocean-container, .orange-container {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 50%, #fff7ed 100%);
+  min-height: 100vh;
+}
+
+.ocean-hero, .orange-hero {
+  background: linear-gradient(135deg, #ffedd5 0%, #fff7ed 50%, #ffedd5 100%);
+}
+
+.ocean-title, .orange-title {
+  background: linear-gradient(135deg, #ea580c, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ocean-subtitle, .orange-subtitle {
+  color: #64748b;
+  line-height: 1.8;
+}
+
+.ocean-card, .orange-card {
+  background: white;
+  border: 1px solid var(--orange-border);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.06);
+}
+
+.ocean-card:hover, .orange-card:hover {
+  border-color: var(--orange-primary);
+  box-shadow: 0 12px 32px -8px rgba(249, 115, 22, 0.2);
+  transform: translateY(-2px);
+}
+
+.ocean-button, .orange-button {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: white;
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.25);
+}
+
+.ocean-button:hover, .orange-button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.35);
+}
+
+.ocean-button-small, .orange-button-small {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.2);
+}
+
+.ocean-button-small:hover, .orange-button-small:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+
+.ocean-tag, .orange-tag {
+  background: var(--orange-light);
+  color: var(--orange-dark);
+  border: 1px solid var(--orange-border);
+}
+
+.ocean-footer, .orange-footer {
+  border-top: 1px solid var(--orange-border);
+  background: rgba(255, 237, 213, 0.5);
+}
+
+@media (max-width: 768px) {
+  .ocean-container {
+    background: linear-gradient(180deg, #fff7ed 0%, #ffedd5 100%);
+  }
 }

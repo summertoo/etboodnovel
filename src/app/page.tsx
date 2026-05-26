@@ -10,23 +10,23 @@ export default function HomePage() {
   const t = (zh: string, en: string) => (lang === "zh" ? zh : en);
 
   return (
-    <div className="ocean-container">
+    <div className="orange-container">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="ocean-hero py-16 md:py-24 px-4">
+      <section className="orange-hero py-16 md:py-24 px-4">
         <div className="max-w-5xl mx-auto text-center fly-in">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold ocean-title mb-4 md:mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold orange-title mb-4 md:mb-6">
             {t("双鱼小说", "ShuangYu Novels")}
           </h1>
-          <p className="text-lg md:text-xl ocean-subtitle max-w-2xl mx-auto mb-8 px-4">
+          <p className="text-lg md:text-xl orange-subtitle max-w-2xl mx-auto mb-8 px-4">
             {t(
               "原创中英双语网络小说平台 — 穿越、武侠、短篇故事，精彩纷呈",
               "Original Chinese-English bilingual web novels — Transmigration, Wuxia, Short Stories, and more"
             )}
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/novels" className="ocean-button">
+            <Link href="/novels" className="orange-button">
               {t("浏览全部小说", "Browse All Novels")}
             </Link>
           </div>
@@ -39,7 +39,7 @@ export default function HomePage() {
           <h2 className="text-2xl md:text-3xl font-bold text-slate-800 mb-2">
             {t("精选小说", "Featured Novels")}
           </h2>
-          <p className="ocean-subtitle mb-8">
+          <p className="orange-subtitle mb-8">
             {t("点击进入阅读", "Click to start reading")}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -47,7 +47,7 @@ export default function HomePage() {
               <Link
                 key={novel.slug}
                 href={`/novels/${novel.slug}`}
-                className="ocean-card p-5 fly-in block hover:-translate-y-1 transition-all"
+                className="orange-card p-5 fly-in block hover:-translate-y-1 transition-all"
               >
                 <div className="flex items-start gap-4 mb-3">
                   <div className="w-16 h-20 rounded-xl bg-gradient-to-br from-sky-100 to-cyan-100 flex items-center justify-center text-2xl shrink-0 shadow-inner">
@@ -69,7 +69,7 @@ export default function HomePage() {
                   {novel.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="text-xs px-2 py-0.5 rounded-full ocean-tag"
+                      className="text-xs px-2 py-0.5 rounded-full orange-tag"
                     >
                       {lang === "zh" ? tag.zh : tag.en}
                     </span>
@@ -82,7 +82,7 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="ocean-footer py-8 px-4 text-center text-sm text-slate-500">
+      <footer className="orange-footer py-8 px-4 text-center text-sm text-slate-500">
           <p>{t("© 2026 双鱼小说 — 中英双语原创小说阅读平台", "© 2026 ShuangYu Novels — Bilingual Original Novel Platform")}</p>
       </footer>
     </div>
