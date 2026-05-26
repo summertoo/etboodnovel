@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 奇异小说 — Fantasy Novels
 
-## Getting Started
+中英双语原创小说阅读平台。从 [ZD Tech Studio](https://etboodonline.vercel.app) 分离出来的独立小说项目。
 
-First, run the development server:
+## 技术栈
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+
+## 本地开发
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+打开 [http://localhost:3000](http://localhost:3000) 查看。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 当前小说
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **码农穿越平民世界 (Coder Transmigrates to the Common People's World)** — 连载中
+- **群雄战记：中华英雄传 (Warlord Saga: Heroes of China)** — 连载中
+- **驯服 (Xunfu)** — 连载中
 
-## Learn More
+## 数据结构
 
-To learn more about Next.js, take a look at the following resources:
+- `src/data/novels.ts` — 小说元数据
+- `src/data/chapters/` — 各章节内容（JSON 格式，包含中英双语）
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 分离说明
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+该项目原为 [etboodonline](https://github.com/summertoo/etboodonline) 的一部分，于 2026-05-26 分离为独立项目。
