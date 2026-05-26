@@ -6,6 +6,14 @@
   --foreground-rgb: 30, 41, 59;
   --background-start-rgb: 248, 250, 252;
   --background-end-rgb: 248, 250, 252;
+  /* 淡蓝色主题变量 */
+  --ocean-primary: #0ea5e9;
+  --ocean-secondary: #38bdf8;
+  --ocean-accent: #7dd3fc;
+  --ocean-border: #bae6fd;
+  --ocean-muted: #64748b;
+  --ocean-light: #f0f9ff;
+  --ocean-dark: #0369a1;
 }
 
 body {
@@ -15,41 +23,68 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.cyber-container {
-  background: linear-gradient(135deg, #f8fafc 0%, #fff7ed 50%, #fdf2f8 100%);
+/* 海洋主题容器 - 淡蓝色渐变背景 */
+.ocean-container {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0f9ff 100%);
   min-height: 100vh;
 }
 
-.cyber-hero {
-  background: linear-gradient(135deg, #fff7ed 0%, #fdf2f8 50%, #fef3c7 100%);
+.ocean-hero {
+  background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 50%, #e0f2fe 100%);
 }
 
-.cyber-title {
-  background: linear-gradient(135deg, #ea580c, #db2777);
+/* 标题 - 海洋蓝渐变 */
+.ocean-title {
+  background: linear-gradient(135deg, #0284c7, #0ea5e9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.cyber-subtitle {
+/* 副标题 */
+.ocean-subtitle {
   color: #64748b;
   line-height: 1.8;
 }
 
-.cyber-card {
+/* 卡片样式 - 海洋风格 */
+.ocean-card {
   background: white;
-  border: 1px solid #fde68a;
-  border-radius: 12px;
+  border: 1px solid var(--ocean-border);
+  border-radius: 16px;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.06);
 }
 
-.cyber-card:hover {
-  border-color: #f59e0b;
-  box-shadow: 0 10px 30px -10px rgba(251, 146, 60, 0.2);
+.ocean-card:hover {
+  border-color: var(--ocean-primary);
+  box-shadow: 0 12px 32px -8px rgba(14, 165, 233, 0.2);
+  transform: translateY(-2px);
 }
 
-.cyber-button-small {
-  background: linear-gradient(135deg, #f97316, #ec4899);
+/* 按钮 */
+.ocean-button {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  color: white;
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.25);
+}
+
+.ocean-button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.35);
+}
+
+/* 小按钮 */
+.ocean-button-small {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
   color: white;
   padding: 8px 20px;
   border-radius: 8px;
@@ -58,23 +93,88 @@ body {
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.2);
 }
 
-.cyber-button-small:hover {
+.ocean-button-small:hover {
   opacity: 0.9;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(251, 146, 60, 0.3);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
 }
 
-.cyber-footer {
-  border-top: 1px solid #fde68a;
+/* 标签样式 */
+.ocean-tag {
+  background: var(--ocean-light);
+  color: var(--ocean-dark);
+  border: 1px solid var(--ocean-border);
+}
+
+.ocean-footer {
+  border-top: 1px solid var(--ocean-border);
+  background: rgba(224, 242, 254, 0.5);
+}
+
+/* 状态标签 */
+.status-ongoing {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.status-completed {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+/* 章节编号圆圈 */
+.chapter-number {
+  background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+  color: var(--ocean-dark);
+}
+
+/* 双语模式边框 */
+.bilingual-border {
+  border-left: 3px solid var(--ocean-accent);
+}
+
+/* 章节内容样式 */
+.chapter-content p {
+  margin-bottom: 1.5em;
+  line-height: 1.9;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  .ocean-container {
+    background: linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 100%);
+  }
+  
+  .ocean-card {
+    border-radius: 12px;
+    padding: 1rem;
+  }
+}
+
+/* 平板适配 */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .ocean-container {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 60%, #f0f9ff 100%);
+  }
+}
+
+/* 桌面端大屏幕 */
+@media (min-width: 1280px) {
+  .ocean-container {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 40%, #f0f9ff 30%, #e0f2fe 100%);
+  }
 }
 
 .fly-in {
-  animation: flyIn 0.6s ease-out;
+  animation: fadeInUp 0.6s ease-out;
 }
 
-@keyframes flyIn {
+@keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -85,9 +185,15 @@ body {
   }
 }
 
-:root {
-  --cyber-primary: #ea580c;
-  --cyber-secondary: #db2777;
-  --cyber-border: #fde68a;
-  --cyber-muted: #64748b;
+/* 阅读器暗色模式支持 */
+.reader-mode {
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 2;
+  letter-spacing: 0.02em;
+}
+
+.reader-mode p {
+  text-align: justify;
+  text-justify: inter-ideograph;
 }

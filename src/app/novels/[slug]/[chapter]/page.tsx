@@ -25,6 +25,7 @@ export default function ChapterPage() {
   const [data, setData] = useState<ChapterData | null>(null);
   const [loading, setLoading] = useState(true);
   const [bilingualMode, setBilingualMode] = useState(true);
+  const [fontSize, setFontSize] = useState<"small" | "medium" | "large">("medium");
 
   const novel = getNovelBySlug(slug);
 
@@ -68,10 +69,16 @@ export default function ChapterPage() {
 
   if (loading) {
     return (
-      <div className="cyber-container min-h-screen">
+      <div className="ocean-container min-h-screen">
         <Navbar />
         <div className="flex items-center justify-center py-32">
-          <p className="text-gray-500">{t("加载中...", "Loading...")}</p>
+          <div className="flex items-center gap-2 text-sky-600">
+            <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+            </svg>
+            <span>{t("加载中...", "Loading...")}</span>
+          </div>
         </div>
       </div>
     );
@@ -83,38 +90,65 @@ export default function ChapterPage() {
 
   const displayContent = lang === "zh" ? data.zh : data.en;
 
+  const fontSizeClasses = {
+    small: "text-base",
+    medium: "text-lg",
+    large: "text-xl",
+  };
+
   return (
-    <div className="cyber-container min-h-screen">
+    <div className="ocean-container min-h-screen">
       <Navbar />
 
-      <main className="max-w-3xl mx-auto px-4 py-8">
+      <main className="max-w-3xl mx-auto px-4 py-6 md:py-10">
         {/* Back link */}
         <Link
           href={`/novels/${slug}`}
-          className="inline-flex items-center gap-1 text-sm text-amber-600 hover:text-amber-700 mb-6"
+          className="inline-flex items-center gap-1.5 text-sm text-sky-600 hover:text-sky-700 mb-6 font-medium"
         >
-          ← {t("返回小说详情", "Back to Novel")}
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+          {t("返回小说详情", "Back to Novel")}
         </Link>
 
         {/* Chapter header */}
         <div className="mb-8 fly-in">
-          <p className="text-sm text-gray-500 mb-1">
+          <p className="text-sm text-slate-500 mb-1">
             {lang === "zh" ? data.novelTitle.zh : data.novelTitle.en}
           </p>
-          <h1 className="text-2xl md:text-3xl font-bold cyber-title">
+          <h1 className="text-2xl md:text-3xl font-bold ocean-title">
             {lang === "zh" ? data.chapterTitle.zh : data.chapterTitle.en}
           </h1>
-          <div className="flex items-center gap-3 mt-2">
-            <span className="text-xs text-gray-400">
+          <div className="flex flex-wrap items-center gap-3 mt-3">
+            <span className="text-xs text-slate-400">
               {t("第", "Ch.")}
               {data.chapterNumber} / {data.totalChapters}
             </span>
+            
+            {/* 字体大小控制 */}
+            <div className="flex items-center gap-1 bg-slate-100 rounded-lg p-1">
+              {(["small", "medium", "large"] as const).map((size) => (
+                <button
+                  key={size}
+                  onClick={() => setFontSize(size)}
+                  className={`px-2 py-1 rounded text-xs transition-colors ${
+                    fontSize === size
+                      ? "bg-white text-sky-600 shadow-sm"
+                      : "text-slate-500 hover:text-sky-600"
+                  }`}
+                >
+                  {size === "small" ? "A" : size === "medium" ? "A+" : "A++"}
+                </button>
+              ))}
+            </div>
+
             <button
               onClick={() => setBilingualMode(!bilingualMode)}
-              className={`text-xs px-2.5 py-1 rounded-full border transition-colors ${
+              className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
                 bilingualMode
-                  ? "bg-amber-50 border-amber-300 text-amber-700"
-                  : "bg-gray-50 border-gray-200 text-gray-500"
+                  ? "bg-sky-100 border-sky-300 text-sky-700"
+                  : "bg-slate-50 border-slate-200 text-slate-500"
               }`}
             >
               {bilingualMode
@@ -125,16 +159,16 @@ export default function ChapterPage() {
         </div>
 
         {/* Chapter content */}
-        <div className="space-y-5 fly-in">
+        <div className={`reader-mode fly-in ${fontSizeClasses[fontSize]}`}>
           {bilingualMode && lang === "zh" ? (
             /* Bilingual mode: show both, zh first */
             data.zh.map((para, i) => (
-              <div key={i} className="border-l-2 border-amber-200 pl-4">
-                <p className="text-base leading-relaxed text-gray-800 mb-2">
+              <div key={i} className="bilingual-border pl-4 md:pl-6 my-6">
+                <p className="text-slate-800 leading-[1.9] mb-4">
                   {para}
                 </p>
                 {data.en[i] && (
-                  <p className="text-sm leading-relaxed text-gray-500 italic">
+                  <p className="text-slate-500 leading-relaxed italic border-l-2 border-slate-200 pl-3">
                     {data.en[i]}
                   </p>
                 )}
@@ -143,12 +177,12 @@ export default function ChapterPage() {
           ) : bilingualMode && lang === "en" ? (
             /* Bilingual mode: show both, en first */
             data.en.map((para, i) => (
-              <div key={i} className="border-l-2 border-amber-200 pl-4">
-                <p className="text-base leading-relaxed text-gray-800 mb-2">
+              <div key={i} className="bilingual-border pl-4 md:pl-6 my-6">
+                <p className="text-slate-800 leading-[1.9] mb-4">
                   {para}
                 </p>
                 {data.zh[i] && (
-                  <p className="text-sm leading-relaxed text-gray-500">
+                  <p className="text-slate-500 leading-relaxed border-l-2 border-slate-200 pl-3">
                     {data.zh[i]}
                   </p>
                 )}
@@ -159,7 +193,7 @@ export default function ChapterPage() {
             displayContent.map((para, i) => (
               <p
                 key={i}
-                className="text-base leading-relaxed text-gray-800"
+                className="text-slate-800 leading-[1.9] mb-6"
               >
                 {para}
               </p>
@@ -168,13 +202,16 @@ export default function ChapterPage() {
         </div>
 
         {/* Navigation */}
-        <div className="flex items-center justify-between mt-12 pt-8 border-t border-amber-100">
+        <div className="flex items-center justify-between mt-12 pt-8 border-t border-sky-100">
           {data.prevChapter ? (
             <Link
               href={`/novels/${slug}/${data.prevChapter}`}
-              className="cyber-button-small inline-flex items-center gap-1"
+              className="ocean-button-small inline-flex items-center gap-1.5"
             >
-              ← {t("上一章", "Previous")}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              {t("上一章", "Previous")}
             </Link>
           ) : (
             <span />
@@ -183,9 +220,12 @@ export default function ChapterPage() {
           {data.nextChapter ? (
             <Link
               href={`/novels/${slug}/${data.nextChapter}`}
-              className="cyber-button-small inline-flex items-center gap-1"
+              className="ocean-button-small inline-flex items-center gap-1.5"
             >
-              {t("下一章", "Next")} →
+              {t("下一章", "Next")}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </Link>
           ) : (
             <span />
@@ -193,10 +233,10 @@ export default function ChapterPage() {
         </div>
       </main>
 
-      <footer className="cyber-footer py-8 px-4 text-center text-sm text-gray-500">
+      <footer className="ocean-footer py-8 px-4 text-center text-sm text-slate-500">
         <p>
           {t(
-            "© 2026 奇异小说 — 中英双语原创小说阅读平台",
+            "© 2026 双鱼小说 — 中英双语原创小说阅读平台",
             "© 2026 Fantasy Novels — Bilingual Original Novel Platform"
           )}
         </p>

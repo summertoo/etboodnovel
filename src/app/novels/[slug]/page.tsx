@@ -19,31 +19,31 @@ export default function NovelDetailPage() {
   }
 
   return (
-    <div className="cyber-container min-h-screen">
+    <div className="ocean-container min-h-screen">
       <Navbar />
 
-      <main className="max-w-4xl mx-auto px-4 py-12">
+      <main className="max-w-4xl mx-auto px-4 py-8 md:py-12">
         {/* Novel Header */}
-        <div className="cyber-card p-6 md:p-8 mb-8 fly-in">
-          <div className="flex flex-col md:flex-row gap-6">
+        <div className="ocean-card p-5 md:p-8 mb-6 md:mb-8 fly-in">
+          <div className="flex flex-col md:flex-row gap-5 md:gap-8">
             {/* Cover */}
-            <div className="w-full md:w-48 h-56 md:h-64 rounded-lg bg-gradient-to-br from-amber-100 via-orange-50 to-pink-100 flex items-center justify-center text-6xl shrink-0">
+            <div className="w-full md:w-44 h-52 md:h-60 rounded-xl bg-gradient-to-br from-sky-100 via-blue-50 to-cyan-100 flex items-center justify-center text-6xl shrink-0 shadow-inner">
               📖
             </div>
 
             {/* Info */}
             <div className="flex-1">
-              <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
+              <h1 className="text-2xl md:text-3xl font-bold text-slate-800 mb-2">
                 {lang === "zh" ? novel.title.zh : novel.title.en}
               </h1>
-              <p className="text-sm text-gray-500 mb-3">
+              <p className="text-sm text-slate-500 mb-3">
                 {novel.author}
               </p>
               <span
                 className={`inline-block text-xs px-3 py-1 rounded-full font-medium mb-4 ${
                   novel.status === "ongoing"
-                    ? "bg-green-50 text-green-700 border border-green-200"
-                    : "bg-gray-100 text-gray-600 border border-gray-200"
+                    ? "status-ongoing"
+                    : "status-completed"
                 }`}
               >
                 {t(
@@ -52,7 +52,7 @@ export default function NovelDetailPage() {
                 )}
               </span>
 
-              <p className="text-sm text-gray-600 leading-relaxed mb-4">
+              <p className="text-sm text-slate-600 leading-relaxed mb-4">
                 {lang === "zh" ? novel.synopsis.zh : novel.synopsis.en}
               </p>
 
@@ -60,7 +60,7 @@ export default function NovelDetailPage() {
                 {novel.tags.map((tag, i) => (
                   <span
                     key={i}
-                    className="text-xs px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200"
+                    className="text-xs px-2.5 py-1 rounded-full ocean-tag"
                   >
                     {lang === "zh" ? tag.zh : tag.en}
                   </span>
@@ -72,36 +72,36 @@ export default function NovelDetailPage() {
 
         {/* Chapter List */}
         <div className="fly-in">
-          <h2 className="text-xl font-bold text-gray-800 mb-4">
+          <h2 className="text-xl font-bold text-slate-800 mb-4">
             {t("章节列表", "Chapter List")}{" "}
-            <span className="text-sm font-normal text-gray-500">
+            <span className="text-sm font-normal text-slate-500">
               ({novel.totalChapters}{" "}
               {t("章", novel.totalChapters > 1 ? "chapters" : "chapter")})
             </span>
           </h2>
 
-          <div className="space-y-2">
+          <div className="grid gap-3 md:grid-cols-2">
             {novel.chapters.map((ch) => (
               <Link
                 key={ch.id}
                 href={`/novels/${novel.slug}/${ch.number}`}
-                className="cyber-card p-4 flex items-center justify-between hover:-translate-y-0.5 transition-transform block"
+                className="ocean-card p-4 flex items-center justify-between hover:-translate-y-0.5 transition-all"
               >
-                <div className="flex items-center gap-3">
-                  <span className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-100 to-pink-100 flex items-center justify-center text-sm font-bold text-amber-700 shrink-0">
+                <div className="flex items-center gap-3 min-w-0">
+                  <span className="w-10 h-10 rounded-full chapter-number flex items-center justify-center text-sm font-bold shrink-0">
                     {ch.number}
                   </span>
-                  <div>
-                    <p className="font-medium text-gray-800 text-sm">
+                  <div className="min-w-0">
+                    <p className="font-medium text-slate-800 text-sm truncate">
                       {lang === "zh" ? ch.title.zh : ch.title.en}
                     </p>
-                    <p className="text-xs text-gray-400">
+                    <p className="text-xs text-slate-400">
                       {ch.publishDate} · {ch.wordCount}{" "}
                       {t("字", "words")}
                     </p>
                   </div>
                 </div>
-                <span className="text-xs text-amber-600 hover:text-amber-700 font-medium shrink-0">
+                <span className="text-xs text-sky-600 hover:text-sky-700 font-medium shrink-0 ml-2">
                   {t("阅读 →", "Read →")}
                 </span>
               </Link>
@@ -110,10 +110,10 @@ export default function NovelDetailPage() {
         </div>
       </main>
 
-      <footer className="cyber-footer py-8 px-4 text-center text-sm text-gray-500">
+      <footer className="ocean-footer py-8 px-4 text-center text-sm text-slate-500">
         <p>
           {t(
-            "© 2026 奇异小说 — 中英双语原创小说阅读平台",
+            "© 2026 双鱼小说 — 中英双语原创小说阅读平台",
             "© 2026 Fantasy Novels — Bilingual Original Novel Platform"
           )}
         </p>

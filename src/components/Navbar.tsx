@@ -21,24 +21,24 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-lg bg-white/70 border-b border-[var(--cyber-border)]">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <nav className="sticky top-0 z-50 backdrop-blur-lg bg-white/80 border-b border-[var(--ocean-border)] shadow-sm">
+      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-6">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-xl">📚</span>
-            <span className="font-bold text-lg cyber-title">
-              {mounted ? (lang === "zh" ? "奇异小说" : "Fantasy Novels") : "奇异小说"}
+          <Link href="/" className="flex items-center gap-2 group">
+            <span className="text-2xl">📖</span>
+            <span className="font-bold text-lg ocean-title transition-transform group-hover:scale-105">
+              {mounted ? (lang === "zh" ? "双鱼小说" : "ShuangYu Novels") : "双鱼小说"}
             </span>
           </Link>
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm transition-colors ${
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   pathname === link.href
-                    ? "text-[var(--cyber-primary)] font-semibold"
-                    : "text-[var(--cyber-muted)] hover:text-[var(--cyber-primary)]"
+                    ? "bg-sky-100 text-sky-700"
+                    : "text-slate-600 hover:bg-sky-50 hover:text-sky-600"
                 }`}
               >
                 {mounted
@@ -54,7 +54,7 @@ export default function Navbar() {
           {mounted && (
             <button
               onClick={toggleLang}
-              className="text-xs px-3 py-1.5 rounded-full border border-[var(--cyber-border)] hover:bg-gray-50 transition-colors"
+              className="text-xs px-4 py-2 rounded-full border border-[var(--ocean-border)] bg-sky-50 text-sky-600 hover:bg-sky-100 transition-colors font-medium"
             >
               {lang === "zh" ? "EN" : "中"}
             </button>
