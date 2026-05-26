@@ -69,10 +69,10 @@ export default function ChapterPage() {
 
   if (loading) {
     return (
-      <div className="ocean-container min-h-screen">
+      <div className="orange-container min-h-screen">
         <Navbar />
         <div className="flex items-center justify-center py-32">
-          <div className="flex items-center gap-2 text-sky-600">
+          <div className="flex items-center gap-2 text-orange-600">
             <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
@@ -97,14 +97,14 @@ export default function ChapterPage() {
   };
 
   return (
-    <div className="ocean-container min-h-screen">
+    <div className="orange-container min-h-screen">
       <Navbar />
 
       <main className="max-w-3xl mx-auto px-4 py-6 md:py-10">
         {/* Back link */}
         <Link
           href={`/novels/${slug}`}
-          className="inline-flex items-center gap-1.5 text-sm text-sky-600 hover:text-sky-700 mb-6 font-medium"
+          className="inline-flex items-center gap-1.5 text-sm text-orange-600 hover:text-orange-700 mb-6 font-medium"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -117,7 +117,7 @@ export default function ChapterPage() {
           <p className="text-sm text-slate-500 mb-1">
             {lang === "zh" ? data.novelTitle.zh : data.novelTitle.en}
           </p>
-          <h1 className="text-2xl md:text-3xl font-bold ocean-title">
+          <h1 className="text-2xl md:text-3xl font-bold orange-title">
             {lang === "zh" ? data.chapterTitle.zh : data.chapterTitle.en}
           </h1>
           <div className="flex flex-wrap items-center gap-3 mt-3">
@@ -134,8 +134,8 @@ export default function ChapterPage() {
                   onClick={() => setFontSize(size)}
                   className={`px-2 py-1 rounded text-xs transition-colors ${
                     fontSize === size
-                      ? "bg-white text-sky-600 shadow-sm"
-                      : "text-slate-500 hover:text-sky-600"
+                      ? "bg-white text-orange-600 shadow-sm"
+                      : "text-slate-500 hover:text-orange-600"
                   }`}
                 >
                   {size === "small" ? "A" : size === "medium" ? "A+" : "A++"}
@@ -147,7 +147,7 @@ export default function ChapterPage() {
               onClick={() => setBilingualMode(!bilingualMode)}
               className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
                 bilingualMode
-                  ? "bg-sky-100 border-sky-300 text-sky-700"
+                  ? "bg-orange-100 border-orange-300 text-orange-700"
                   : "bg-slate-50 border-slate-200 text-slate-500"
               }`}
             >
@@ -160,34 +160,20 @@ export default function ChapterPage() {
 
         {/* Chapter content */}
         <div className={`reader-mode fly-in ${fontSizeClasses[fontSize]}`}>
-          {bilingualMode && lang === "zh" ? (
-            /* Bilingual mode: show both, zh first */
-            data.zh.map((para, i) => (
-              <div key={i} className="bilingual-border pl-4 md:pl-6 my-6">
-                <p className="text-slate-800 leading-[1.9] mb-4">
-                  {para}
-                </p>
-                {data.en[i] && (
-                  <p className="text-slate-500 leading-relaxed italic border-l-2 border-slate-200 pl-3">
-                    {data.en[i]}
+          {bilingualMode ? (
+            /* Bilingual mode: side by side */
+            <div className="space-y-4">
+              {data.zh.map((para, i) => (
+                <div key={i} className="flex flex-col md:flex-row gap-2 md:gap-8 py-3 border-b border-orange-100">
+                  <p className="text-slate-800 leading-[1.9] md:w-1/2 md:text-right">
+                    {para}
                   </p>
-                )}
-              </div>
-            ))
-          ) : bilingualMode && lang === "en" ? (
-            /* Bilingual mode: show both, en first */
-            data.en.map((para, i) => (
-              <div key={i} className="bilingual-border pl-4 md:pl-6 my-6">
-                <p className="text-slate-800 leading-[1.9] mb-4">
-                  {para}
-                </p>
-                {data.zh[i] && (
-                  <p className="text-slate-500 leading-relaxed border-l-2 border-slate-200 pl-3">
-                    {data.zh[i]}
+                  <p className="text-slate-500 leading-[1.9] italic md:w-1/2">
+                    {data.en[i] || ""}
                   </p>
-                )}
-              </div>
-            ))
+                </div>
+              ))}
+            </div>
           ) : (
             /* Single language mode */
             displayContent.map((para, i) => (
@@ -202,11 +188,11 @@ export default function ChapterPage() {
         </div>
 
         {/* Navigation */}
-        <div className="flex items-center justify-between mt-12 pt-8 border-t border-sky-100">
+        <div className="flex items-center justify-between mt-12 pt-8 border-t border-orange-100">
           {data.prevChapter ? (
             <Link
               href={`/novels/${slug}/${data.prevChapter}`}
-              className="ocean-button-small inline-flex items-center gap-1.5"
+              className="orange-button-small inline-flex items-center gap-1.5"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -220,7 +206,7 @@ export default function ChapterPage() {
           {data.nextChapter ? (
             <Link
               href={`/novels/${slug}/${data.nextChapter}`}
-              className="ocean-button-small inline-flex items-center gap-1.5"
+              className="orange-button-small inline-flex items-center gap-1.5"
             >
               {t("下一章", "Next")}
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -233,7 +219,7 @@ export default function ChapterPage() {
         </div>
       </main>
 
-      <footer className="ocean-footer py-8 px-4 text-center text-sm text-slate-500">
+      <footer className="orange-footer py-8 px-4 text-center text-sm text-slate-500">
         <p>
           {t(
             "© 2026 双鱼小说 — 中英双语原创小说阅读平台",
